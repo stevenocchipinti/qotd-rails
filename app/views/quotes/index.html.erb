@@ -1,0 +1,35 @@
+<%= form_for(@new_quote) do |f| %>
+  <% if @new_quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+      <% @new_quote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quote %><br>
+    <%= f.text_area :quote %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="actions">
+    <%= f.submit value: "Quote it!" %>
+  </div>
+<% end %>
+
+<% @quotes.each do |quote| %>
+  <div>
+    <%= link_to quote.quote, edit_quote_path(quote) %>
+  </div>
+  <div>
+    &dash; <%= quote.author %>, <%= format_datetime(quote.quoted_at) %>
+    <%= link_to 'X', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
