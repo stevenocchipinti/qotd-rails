@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+- 2.0.0
+deploy:
+  provider: heroku
+  app: shitmymatessay
+  run: "rake db:migrate"
+  api_key:
+    secure: krCI/O9PKiOSSmJrKBlm4Yu9djQDdk59RN4NE5L4wHB8nkzQ/b5DWaDScmDpJMY3fcwla7mgO75J0aR/Tyz3pgvmX5fW1qOHf1w4iarKFii1TIFgEfs85AALomxTSPnyU2JoqgCpXn8i5zClSMC7kv5FI/+GbaT1e3F88W7vcbU=
